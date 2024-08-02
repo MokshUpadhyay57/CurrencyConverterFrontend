@@ -1,28 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, BrowserRouter, Routes } from 'react-router-dom';
-import Converter from './pages/currencyConverter';  // Make sure to create these components
-import TimeSeries from './pages/timeseries';
-import History from './pages/history';
-import Test from './pages/test';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CurrencyConverter from './components/Converter';
+import Home from './components/Home';
+import History from './components/History';
 
-function App(){
+const App = () => {
   return (
-    <>
-      
-      <BrowserRouter>
+    <BrowserRouter>
         <Routes>
-            <Route path="/convert" element={<Converter/>} />
-            <Route path="/time-series" element={<TimeSeries/>} />
-            <Route path="/history" element={<History/>} />
-            <Route path="/" exact element={<Test/>} />
+          <Route path="/converter" element={<CurrencyConverter/>} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/History" element={<History/>} />
         </Routes>
-
-      
-      </BrowserRouter>
-    </>
-    );
-};
-
-
+    </BrowserRouter>
+  )
+}
 
 export default App
