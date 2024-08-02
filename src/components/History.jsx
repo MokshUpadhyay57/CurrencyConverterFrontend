@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../styles/history.css';
 
 const History = () => {
     const [date, setDate] = useState('');
@@ -24,37 +25,25 @@ const History = () => {
     };
 
     return (
-        <div>
+        <>
+        <div className='history-wrapper'>
             <h2>Historical Exchange Rate</h2>
             <div>
                 <label>
                     Date:
-                    <input
-                        type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                    />
+                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
                 </label>
             </div>
             <div>
                 <label>
                     Base Currency:
-                    <input
-                        type="text"
-                        value={base}
-                        placeholder='Enter 3 Letter Code'
-                        onChange={(e) => setBase(e.target.value)}
-                    />
+                    <input type="text" value={base} placeholder='Enter 3 Letter Code' onChange={(e) => setBase(e.target.value)} />
                 </label>
             </div>
             <div>
                 <label>
                     Target Currency:
-                    <input
-                        type="text"
-                        value={target}
-                        placeholder='Enter 3 Letter Code'
-                        onChange={(e) => setTarget(e.target.value)}
+                    <input type="text" value={target} placeholder='Enter 3 Letter Code' onChange={(e) => setTarget(e.target.value)}
                     />
                 </label>
             </div>
@@ -66,6 +55,7 @@ const History = () => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 

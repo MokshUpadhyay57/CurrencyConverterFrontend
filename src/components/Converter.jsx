@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/converter.css';
 
 const CurrencyConverter = () => {
     const [currencies, setCurrencies] = useState([]);
@@ -29,7 +30,6 @@ const CurrencyConverter = () => {
 
             // For Debugging
             // console.log(response.data);
-
             const rate = response.data[targetCurrency];
             const conversion = (amount * rate).toFixed(2);
             setExchangeRate(rate.toFixed(2));
@@ -41,12 +41,19 @@ const CurrencyConverter = () => {
         }
     };
 
+     // Format number with commas and limit decimal places
+     const formatNumber = (number) => {
+        const num = Number(number).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        console.log(num);
+        return num.toString();
+    };
+
     return (
-        <div>
+        <div className='converter-wrapper'>
             <h2>Currency Converter</h2>
-            <div>
+            <div className='input-wrapper'>
                 <label>
-                    Base Currency:
+                    Base Currency
                     <select value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)}>
                         {currencies.map((currency) => (
                             <option key={currency} value={currency}>
@@ -55,10 +62,8 @@ const CurrencyConverter = () => {
                         ))}
                     </select>
                 </label>
-            </div>
-            <div>
                 <label>
-                    Target Currency:
+                    Target Currency
                     <select value={targetCurrency} onChange={(e) => setTargetCurrency(e.target.value)}>
                         {currencies.map((currency) => (
                             <option key={currency} value={currency}>
@@ -71,16 +76,25 @@ const CurrencyConverter = () => {
             <div>
                 <label>
                     Amount:
-                    <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
+                    <input type="text" value={amount} onChange={(e) => {
+                            const value = e.target.value;
+                                setAmount(value);
+                            }
+                        }
+                    />
                 </label>
             </div>
-            <button onClick={handleConvert}>Convert</button>
+            <div>
+                <button  className='button-wrapper' onClick={handleConvert}>Convert</button>
+
+            </div>
             {convertedAmount !== null && (
-                <div>
+                <div className='result-wrapper'>
                     <h3>Converted Amount:</h3>
                     <p>
-                        {amount} {baseCurrency} = {convertedAmount} {targetCurrency}
-                        Exchange Rate: 1 {baseCurrency} = {exchangeRate} {targetCurrency}
+                        {formatNumber(amount)} {baseCurrency} = {formatNumber(convertedAmount)} {targetCurrency}
+                        <br/>
+                        Exchange Rate: 1 {baseCurrency} = {formatNumber(exchangeRate)} {targetCurrency}
                     </p>
                 </div>
             )}

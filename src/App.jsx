@@ -9,7 +9,7 @@ const App = () => {
     <BrowserRouter>
         <Routes>
           <Route path="/converter" element={<CurrencyConverter/>} />
-          <Route path="/" element={<Home/>} />
+          <Route path="/" index element={<Home/>} />
           <Route path="/History" element={<History/>} />
         </Routes>
     </BrowserRouter>
