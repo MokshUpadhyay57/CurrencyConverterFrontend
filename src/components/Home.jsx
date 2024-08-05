@@ -4,8 +4,7 @@ import CurrencyConverter from './Converter'
 const Home = () => {
   return (
     <>
-        <div>Home</div>
-        <CurrencyConverter/>
+        <div>Welcome to Currency Converter App</div>
     </>
   )
 }

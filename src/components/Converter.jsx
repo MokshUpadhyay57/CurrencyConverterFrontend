@@ -31,6 +31,7 @@ const CurrencyConverter = () => {
             // For Debugging
             // console.log(response.data);
             const rate = response.data[targetCurrency];
+            // console.log(rate);
             const conversion = (amount * rate).toFixed(2);
             setExchangeRate(rate.toFixed(2));
             setConvertedAmount(conversion);
@@ -44,7 +45,6 @@ const CurrencyConverter = () => {
      // Format number with commas and limit decimal places
      const formatNumber = (number) => {
         const num = Number(number).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        console.log(num);
         return num.toString();
     };
 

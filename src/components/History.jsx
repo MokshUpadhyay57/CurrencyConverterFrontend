@@ -30,19 +30,19 @@ const History = () => {
             <h2>Historical Exchange Rate</h2>
             <div>
                 <label>
-                    Date:
+                    Date
                     <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
                 </label>
             </div>
             <div>
                 <label>
-                    Base Currency:
+                    Base Currency
                     <input type="text" value={base} placeholder='Enter 3 Letter Code' onChange={(e) => setBase(e.target.value)} />
                 </label>
             </div>
             <div>
                 <label>
-                    Target Currency:
+                    Target Currency
                     <input type="text" value={target} placeholder='Enter 3 Letter Code' onChange={(e) => setTarget(e.target.value)}
                     />
                 </label>
